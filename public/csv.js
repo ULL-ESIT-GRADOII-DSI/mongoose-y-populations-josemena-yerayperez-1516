@@ -25,8 +25,9 @@ const fillTable = (data) => {
 /* Volcar en la textarea de entrada 
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
-  $.get(fileName, function (data) {
+    $.get(fileName, function (data) {
       $("#original").val(data);
+  });
 };
  
 const handleFileSelect = (evt) => {
@@ -62,10 +63,10 @@ const handleDragFileSelect = (evt) => {
 const handleDragOver = (evt) => {
   evt.stopPropagation();
   evt.preventDefault();
-  evt.target.style.background = "yellow";
+  evt.target.style.background = "#81F7F3";
 }
 
-$(document).ready(() => {
+  $(document).ready(() => {
     let original = document.getElementById("original");  
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
