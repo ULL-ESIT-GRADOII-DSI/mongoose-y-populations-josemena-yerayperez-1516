@@ -4,22 +4,24 @@
   "description": "Analizador de cadenas csv usando AJAX",
   "main": "csv.js",
   "scripts": {
-    "test": "firefox tests/index.html"
+    "test": "firefox tests/index.html",
+    "start": "node app.js",
+    "view": "open http://localhost:8080/"
   },
   "repository": {
     "type": "git",
-    "url": XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    "url": "https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray"
   },
   "keywords": [
     "csv"
   ],
-  "author": XXXXXXXXXX
-  "contributors": [],
+  "author": "Jose Mena && Yeray Perez"
+  "contributors": ["Jose Mena && Yeray Perez"],
   "license": "ISC",
   "bugs": {
-    "url": XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    "url": "https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray"
   },
-  "homepage": XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  "homepage": ["alu0100783612.github.io", "alu0100768893.github.io"]
   "dependencies": {
 	"jquery": "*",
     "underscore": "*",
@@ -29,7 +31,8 @@
     "express-ejs-layouts": "~1.1.0"
   },
   "engines": {
-    "node": XXXXX
+    "node": "0.10.x",
+    "npm": "1.3.x"
   },
   "devDependencies": {
   }
