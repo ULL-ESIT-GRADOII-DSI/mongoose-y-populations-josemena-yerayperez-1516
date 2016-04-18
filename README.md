@@ -36,9 +36,9 @@ Al callback se le pasan los datos retornados por el servido, que estarán en XML
 [## _Campus Virtual de la Asignatura_](https://campusvirtual.ull.es/1516/course/view.php?id=144)
 [## Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=189370)
 
-[## Repo](https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray)
-[## Fork](https://github.com/ULL-ESIT-GRADOII-DSI/ajax-ecma6-ficheros-mena-yeray)
-[## Heroku](http://csvajax-yeray-mena.herokuapp.com/) 
+[## Repo del fork](https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray)
+[## Repo de la organización](https://github.com/ULL-ESIT-GRADOII-DSI/ajax-ecma6-ficheros-mena-yeray)
+[## Heroku](http://csvajax-yeray-mena.herokuapp.com/)
 
 
 [## Yeray Pérez Peraza](http://alu0100783612.github.io/)
