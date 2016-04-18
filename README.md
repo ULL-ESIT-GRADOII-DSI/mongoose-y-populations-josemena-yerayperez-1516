@@ -33,14 +33,14 @@ $.ajax({
 
 Al callback se le pasan los datos retornados por el servido, que estarán en XML, Javascript, Json o en una cadena de texto. También se le pasa un texto con el estado de la respuesta.
 
-[## _Campus Virtual de la Asignatura_](https://campusvirtual.ull.es/1516/course/view.php?id=144)
-[## Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=189370)
+##[_Campus Virtual de la Asignatura_](https://campusvirtual.ull.es/1516/course/view.php?id=144)
+##[_Descripción de la práctica_](https://campusvirtual.ull.es/1516/mod/page/view.php?id=189370)
 
-[## Repo del fork](https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray)
-[## Repo de la organización](https://github.com/ULL-ESIT-GRADOII-DSI/ajax-ecma6-ficheros-mena-yeray)
-[## Heroku](http://csvajax-yeray-mena.herokuapp.com/)
+##[_Repo del fork_](https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray)
+##[_Repo de la organización_](https://github.com/ULL-ESIT-GRADOII-DSI/ajax-ecma6-ficheros-mena-yeray)
+##[_Heroku_](http://csvajax-yeray-mena.herokuapp.com/)
 
 
-[## Yeray Pérez Peraza](http://alu0100783612.github.io/)
-[## José Alberto Mena Gacía](http://alu0100768893.github.io/)
+##[_Yeray Pérez Peraza_](http://alu0100783612.github.io/)
+##[_José Alberto Mena Gacía_](http://alu0100768893.github.io/)
 
