@@ -1,28 +1,26 @@
-# Práctica 2: Comma separated values (CSV) with AJAX
+# Práctica 8: Comma separated values (CSV) with AJAX
 
 ## jQuery.get( url [, data ] [, success ] [, dataType ] )
 * url
-  * Type: String
-  * A string containing the URL to which the request is sent.
+  * Tipo: String
+  * Una cadena con la URL a la cual es enviada la petición.
 * data
-  * Type: PlainObject or String
-  * A plain object or string that is sent to the server with the request.
+  * Tipo: PlainObject o String
+  * Un objeto plano o una cadena que es enviada al servidor con la petición.
 * success
-  * Type: Function( PlainObject data, String textStatus, jqXHR jqXHR )
-  * A callback function that is executed if the request succeeds. 
-    Required if `dataType` is provided, but you can use `null` or `jQuery.noop` as a placeholder.
+  * Tipo: Function.
+  * Un callback que es ejecuado cuando la petición es exitosa. 
 * dataType
-  * Type: String
-  * The type of data expected from the server. Default: Intelligent Guess (xml, json, script, text, html).
+  * Tipo: String
+  * El tipo de dato que se espera del servidor.
 
 ## jQuery.get( [settings ] )
 * settings
-  * Type: PlainObject
-  * A set of key/value pairs that configure the Ajax request. 
-  * All properties except for `url` are optional. 
-  * A default can be set for any option with `$.ajaxSetup()`.
+  * Tipo: PlainObject
+  * Parejas clave/valor que configuran la petición ajax. 
+  * La única propiedad que no es opcional es url. 
 
-This is a shorthand Ajax function, which is equivalent to:
+Pequeño ejemlo con ajax:
 
 ```javascript
 $.ajax({
@@ -33,8 +31,16 @@ $.ajax({
 });
 ```
 
-The success callback function is passed the returned data, which will be an XML root element, text string, JavaScript file, or JSON object, depending on the MIME type of the response. It is also passed the text status of the response.
+Al callback se le pasan los datos retornados por el servido, que estarán en XML, Javascript, Json o en una cadena de texto. También se le pasa un texto con el estado de la respuesta.
 
-# Heroku 
-https://cvsajax.herokuapp.com/
+[## _Campus Virtual de la Asignatura_](https://campusvirtual.ull.es/1516/course/view.php?id=144)
+[## Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=189370)
+
+[## Repo](https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray)
+[## Fork](https://github.com/ULL-ESIT-GRADOII-DSI/ajax-ecma6-ficheros-mena-yeray)
+[## Heroku](http://csvajax-yeray-mena.herokuapp.com/) 
+
+
+[## Yeray Pérez Peraza](http://alu0100783612.github.io/)
+[## José Alberto Mena Gacía](http://alu0100768893.github.io/)
 
