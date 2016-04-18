@@ -2,15 +2,66 @@ table.center {
 	font-weight: bold;
 	color: black;
 	text-align: center;
-
-	margin-left: 90px;
+	font-family: "Times New Roman";
+	border-radius: 8px;
 	margin-top: 10px;
-	
+	margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 10px;
+
 	border: ridge;
+	border-style: dotted;
 	border-color: blue;
 	
 	background-color: white;	
 }
-.output tr:nth-child(odd)    { background-color:#eee; }
-.output tr:nth-child(even)   { background-color:#00FF66; }
+.output tr:nth-child(odd)    { background-color:#58FAF4; }
+.output tr:nth-child(even)   { background-color:#8258FA; }
 .error td{ background-color: red; }
+
+
+.example{
+	font-family: "Times New Roman";
+	font-style: italic;
+	color: black;
+	text-align: center;
+}
+
+.contenido_total{
+	font-family: "Times New Roman";
+	background-color: #E3F6CE;
+}
+.contenido{
+	font-family: arial, verdana, sans-serif;
+	font-style: italic;
+	color: black;
+	text-align: center;
+}
+.titulo_practica{
+	font-family: verdana;
+	font-size: 110%;
+	background-color: #E3F6CE;
+
+}
+button, input{
+background-color: #CEF6CE;
+background-image: -webkit-linear-gradient(rgba(41, 150, 47, .8), rgba(45, 194, 52, .2));
+background-image: -moz-linear-gradient(rgba(41, 150, 47, .8), rgba(45, 194, 52, .2));
+background-image: -o-linear-gradient(rgba(41, 150, 47, .8), rgba(45, 194, 52, .2));
+background-image: linear-gradient(rgba(41, 150, 47, .8), rgba(45, 194, 52, .2));
+-ms-border-radius:8px;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+/*-webkit-box-shadow: 0 8px 0 #D8F6CE, 0 10px 20px rgba(0, 0, 0, .4);*/
+/*-moz-box-shadow: 0 8px 0 #D8F6CE, 0 10px 20px rgba(0, 0, 0, .4);*/
+/*box-shadow: 0 8px 0 #D8F6CE, 0 10px 20px rgba(0, 0, 0, .4);*/
+color: white;
+display: inline-block;
+font-family: ‘Pacifico’, Arial, sans-serif;
+font-size: 15px;
+line-height: 1;
+padding: 15px 25px;
+text-decoration: none;
+/*text-shadow: 0 -1px 1px rgba(25, 123, 29, .7);*/
+}
