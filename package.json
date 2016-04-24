@@ -34,7 +34,9 @@
     "express": "^3.2.6",
     "express-ejs-layouts": "~1.1.0",
     "jquery": "*",
-    "underscore": "*"
+    "underscore": "*",
+     "mongoose": "^4.4.12",
+    "util": "^0.10.3"
   },
   "engines": {
     "node": "5.x",

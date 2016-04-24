@@ -67,6 +67,8 @@ const handleDragOver = (evt) => {
 }
 
   $(document).ready(() => {
+    // comprobar que hay tres elementos para mostrarlos
+    let aux =3;
     let original = document.getElementById("original");  
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
@@ -81,11 +83,32 @@ const handleDragOver = (evt) => {
           'json'
           );
    });
+       // Boton de guardar el contenido del text area
+$("#guardar").click( () => { 
+  let dataString = $('#original').val();
+    $.get("/mongo/input" + (aux % 4),
+    {
+        text: dataString,
+        cont: aux++
+    })
+    return false;
+});
+    
    /* botones para rellenar el textarea */
    $('button.example').each( (_,y) => {
      $(y).click( () => { dump(`${$(y).text()}.txt`); });
+   $.get("/buscar",{Entrada: $(y).text()},
+       (readData) => {
+         $("#original").val(readData[0].text);
+       });
+     });
    });
-
+   
+   $.get("/mostrarBotones", {}, (readData) => {
+            for (var i = 0; i < readData.length; i++) {
+                    $('button.example').get(i).className = "example";
+            }
+        });
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];
     let dropZone = $('.drop_zone')[0];
@@ -93,5 +116,8 @@ const handleDragOver = (evt) => {
     dropZone.addEventListener('drop', handleDragFileSelect, false);
     let inputFile = $('.inputfile')[0];
     inputFile.addEventListener('change', handleFileSelect, false);
+    
+
+
  });
 })();
