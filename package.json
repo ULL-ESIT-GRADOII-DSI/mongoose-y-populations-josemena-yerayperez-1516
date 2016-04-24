@@ -1,5 +1,5 @@
 {
-  "name": "PL_practica2",
+  "name": "Analizador_CSV_MongoDB",
   "version": "1.0.0",
   "description": "Analizador de cadenas csv usando AJAX",
   "main": "csv.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray"
+    "url": "https://github.com/alu0100783612/mongodb-mongoose-csv-mena-yeray"
   },
   "keywords": [
     "csv"
@@ -19,13 +19,10 @@
   "contributors": [
     "Jose Mena && Yeray Perez"
   ],
-  "homepage": [
-    "alu0100783612.github.io",
-    "alu0100768893.github.io"
-  ],
+  "homepage": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alu0100783612/ajax-ecma6-ficheros-mena-yeray"
+    "url": "https://github.com/alu0100783612/mongodb-mongoose-csv-mena-yeray"
   },
   "dependencies": {
     "body-parser": "~1.12.0",
@@ -42,7 +39,5 @@
     "node": "5.x",
     "npm": "1.3.x"
   },
-  "devDependencies": {
-    "bootstrap": "^3.3.6"
-  }
+  "devDependencies": {}
 }
