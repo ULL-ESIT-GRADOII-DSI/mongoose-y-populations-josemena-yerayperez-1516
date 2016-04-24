@@ -5,8 +5,9 @@
 const util = require('util');
 const mongoose = require('mongoose');
 // nos conectamos a nuestra base de datos
+// NO FUNCIONA MONGO, NO VA NI X TERMINAL 
 mongoose.connect('mongodb://localhost/mongodb-mongoose-csv-mena-yeray');
-// creamos la tabala con las cabeceras de los datos
+// creamos la tabala con las cabeceras de los datos./
 const TablaEjemplo = mongoose.Schema({
     "Entrada": String,
     "Producto": String,
