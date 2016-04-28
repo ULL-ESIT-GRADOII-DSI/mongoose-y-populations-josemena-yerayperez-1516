@@ -22,7 +22,7 @@ const fillTable = (data) => {
   $("#finaltable").html(_.template(resultTemplate, { rows: data.rows })); 
 };
 
-/* Volcar en la textarea de entrada 
+/* Volcar en la textarea de name 
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
     $.get(fileName, function (data) {
@@ -44,7 +44,7 @@ const handleFileSelect = (evt) => {
   reader.readAsText(files[0])
 }
 
-/* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
+/* Drag and drop: el fichero arrastrado se vuelca en la textarea de name */
 const handleDragFileSelect = (evt) => {
   evt.stopPropagation();
   evt.preventDefault();
@@ -86,29 +86,39 @@ const handleDragOver = (evt) => {
        // Boton de guardar el contenido del text area
 $("#guardar").click( () => { 
   let dataString = $('#original').val();
-    $.get("/mongo/input" + (aux % 4),
+    $.get("/mongo/" + $("#nombre").val(),
     {
         text: dataString,
         cont: aux++
     })
+      $.get("/mostrarBotones", {}, (readData) => {
+            for (var i = 0; i < readData.length; i++) {
+              if (readData[i]){
+                    $('button.example').get(i).className = "example";
+                    $('button.example').get(i).textContent= readData[i].name;
+              }
+            }
+            $("#cuarto").fadeIn();
+      });
     return false;
 });
+
     
    /* botones para rellenar el textarea */
    $('button.example').each( (_,y) => {
-     $(y).click( () => { dump(`${$(y).text()}.txt`); });
-   $.get("/buscar",{Entrada: $(y).text()},
-       (readData) => {
-         $("#original").val(readData[0].text);
-       });
+    // $(y).click( () => {dump(`${$(y).text()}`); });
+    $(y).click( () => {dump(`${$(y).text()}`); 
+        $.get("/buscar",{name: $(y).text()},
+          (readData) => {
+          console.log("Entre aqui"+ readData[0].text)
+          $("#original").val(readData[0].text);
+        });
      });
    });
+   });
    
-   $.get("/mostrarBotones", {}, (readData) => {
-            for (var i = 0; i < readData.length; i++) {
-                    $('button.example').get(i).className = "example";
-            }
-        });
+
+        
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];
     let dropZone = $('.drop_zone')[0];
@@ -119,5 +129,5 @@ $("#guardar").click( () => {
     
 
 
- });
+// });
 })();

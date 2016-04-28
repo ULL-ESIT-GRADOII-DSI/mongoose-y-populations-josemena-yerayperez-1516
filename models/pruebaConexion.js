@@ -5,13 +5,12 @@
 const util = require('util');
 const mongoose = require('mongoose');
 // nos conectamos a nuestra base de datos
-// NO FUNCIONA MONGO, NO VA NI X TERMINAL 
+
 mongoose.connect('mongodb://localhost/mongodb-mongoose-csv-mena-yeray');
 // creamos la tabala con las cabeceras de los datos./
 const TablaEjemplo = mongoose.Schema({
-    "Entrada": String,
-    "Producto": String,
-    "Precio": String
+    "name": String,
+    "text": String
 
 });
 // añadimos la tabla a la base de datos
@@ -36,7 +35,7 @@ const Datos = mongoose.model("Datos",TablaEjemplo);
   
   Promise.all([p1, p2, p3]).then( (value) => { 
     console.log(util.inspect(value, {depth: null}));
-    mongoose.connection.close(); 
+    // mongoose.connection.close(); 
   });
   
 module.exports = Datos;
