@@ -67,6 +67,8 @@ const handleDragOver = (evt) => {
 }
 
   $(document).ready(() => {
+    console.log("entre al ready");
+
     // comprobar que hay tres elementos para mostrarlos
     let aux =3;
     let original = document.getElementById("original");  
@@ -74,6 +76,10 @@ const handleDragOver = (evt) => {
       original.value = localStorage.original;
     }
 
+    $("#nombre_usuario").click( () => {
+      console.log("Entre al de nombreusu");
+      $.get("analizador", {});
+    });
     /* Request AJAX para que se calcule la tabla */
      $("#parse").click( () => {
         if (window.localStorage) localStorage.original = original.value;
@@ -102,7 +108,6 @@ $("#guardar").click( () => {
       });
     return false;
 });
-
     
    /* botones para rellenar el textarea */
    $('button.example').each( (_,y) => {
@@ -117,8 +122,6 @@ $("#guardar").click( () => {
    });
    });
    
-
-        
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];
     let dropZone = $('.drop_zone')[0];
@@ -127,7 +130,4 @@ $("#guardar").click( () => {
     let inputFile = $('.inputfile')[0];
     inputFile.addEventListener('change', handleFileSelect, false);
     
-
-
-// });
 })();

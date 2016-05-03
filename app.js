@@ -18,8 +18,14 @@ app.use(express.static(__dirname + '/public'));
 
 const calculate = require('./models/calculate.js');
 
-app.get('/', (request, response) => {     
+app.get('/', (request, response) => {
   response.render('index', { title: "Comma Separated Value Analyzer", error:""});
+});
+
+app.get('/analizador', (request,response) => {
+    console.log("entre al get de analizador");
+    //AQUI TENEMOS UN PROBLEMA, NO RENDERIZA LO QUE QUEREMOS, CON LO QUE NO PODEMOS AVANZAR.
+    response.render('csv', { title: "Comma Separated Value Analyzer", error:""});
 });
 
 app.get('/csv', (request, response) => {

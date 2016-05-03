@@ -11,9 +11,13 @@ mongoose.connect('mongodb://localhost/mongodb-mongoose-csv-mena-yeray');
 const TablaEjemplo = mongoose.Schema({
     "name": String,
     "text": String
-
 });
-// añadimos la tabla a la base de datos
+const UsuarioSchema = mongoose.Schema({
+    "nombre": String,
+    //"ejemplo": { type: Schema.Types.ObjectId, ref: 'Usuario' }
+});
+// añadimos la tablas a la base de datos
+const Usuario = mongoose.model("Usuario",UsuarioSchema);
 const Datos = mongoose.model("Datos",TablaEjemplo);
 //Incluimos los datos en la tabla de datos
   let input0 = new Datos({ name: 'input0', text: '"producto",           "precio"\n"camisa",             "4,3"\n"libro de O\"Reilly", "7,2"' });
@@ -39,4 +43,5 @@ const Datos = mongoose.model("Datos",TablaEjemplo);
   });
   
 module.exports = Datos;
+module.exports = Usuario;
 })()  
