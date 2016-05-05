@@ -5,7 +5,10 @@ const app = express();
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 
-const Datos = require('./models/pruebaConexion.js');
+const baseDeDatos = require('./models/pruebaConexion.js');
+const Datos = baseDeDatos.Datos;
+const Usuario = baseDeDatos.Usuario;
+
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -23,8 +26,6 @@ app.get('/', (request, response) => {
 });
 
 app.get('/analizador', (request,response) => {
-    console.log("entre al get de analizador");
-    //AQUI TENEMOS UN PROBLEMA, NO RENDERIZA LO QUE QUEREMOS, CON LO QUE NO PODEMOS AVANZAR.
     response.render('csv', { title: "Comma Separated Value Analyzer", error:""});
 });
 
@@ -58,8 +59,24 @@ app.get('/mostrarBotones', function(req, res) {
     Datos.find({}, function(err, file) {
         if (err)
             return err;
-        console.log("file: " + file);
+        // console.log("file: " + file);
         res.send(file);
+    });
+});
+
+app.get('/botonprueba',function(req, res) {
+    
+    //console.log("id del nombre: " + req.query.nombre._id);
+    Usuario.find({nombre : req.query.nombre}, function(err,file){
+        if(err) return err;
+        // console.log("file: " + file);
+        // console.log("id: " + file[0]._id);
+        // console.log("id: " + file[0].nombre);
+        Datos.find({_creator: file[0]._id}, function(err, files) {
+            if(err) return err;
+            console.log("ejemplos de pollas " + file[0].nombre + ": " + files);
+            res.send(files);
+        });
     });
 });
 
