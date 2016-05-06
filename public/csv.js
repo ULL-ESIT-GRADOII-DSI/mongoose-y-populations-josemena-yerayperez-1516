@@ -77,9 +77,15 @@ const handleDragOver = (evt) => {
     }
 
     $("#entrar").click( () => {
+      console.log("entre al de entrar")
       if(window.localStorage){
-        localStorage.nombre = $("#nombreusu").val();
+        localStorage.nombre = $("#nombreusuario").val();
+        console.log("localStorage.nombre: " + localStorage.nombre);
+        console.log("$('#nombreusu').val(): " + $("#nombreusuario").val());
       }
+//      $.get("/usuario",{nombre: localStorage.nombre},()=>{
+//        console.log("Hola lo cree");
+//      });
     });
     /* Request AJAX para que se calcule la tabla */
      $("#parse").click( () => {
@@ -96,7 +102,8 @@ const handleDragOver = (evt) => {
       $.get("/mongo/" + $("#nombre").val(),
       {
           text: dataString,
-          cont: aux++
+          cont: aux++,
+          nombre: localStorage.nombre
       })
         $.get("/mostrarBotones", {}, (readData) => {
               for (var i = 0; i < readData.length; i++) {
