@@ -53,20 +53,40 @@ app.listen(app.get('port'), () => {
 //SE COMPRUEBE QUE NO TIENE MAS DE LOS QUE DEBE, Y EN TAL CASO ELIMINAR UNO
 //Y AL NUEVO EJEMPLO ASIGNARLE EL '_creator' ADECUADO Y DEMAS
 app.get('/mongo/:variable', function(req, res) {
-    Datos.find({}, function(err, files) {
+    Usuario.find({nombre: req.query.nombre}, {_id:true}, function(err,file){
         if (err) return err;
-        if (files.length > 3) {
-            Datos.remove({name: files[3].name}).exec();
-        }
-        let newDatos = new Datos({name: req.params.variable, text: req.query.text});
-        newDatos.save(function(err){ 
-          if(err) res.send('Algo fallo niño');
-          res.send('Bien');
-          console.log("Base de datos actualizada");
-          console.log("Nombre:" + newDatos.name );
-          console.log("Datos: " + newDatos);
-        });
-    });
+        Datos.find({_creator: file[0]._id}, function(err, files) {
+            if (err) return err;
+            if (files.length > 3) {
+                Datos.remove({name: files[3].name}).exec();
+            }
+            let newDatos = new Datos({_creator: file[0]._id, name: req.params.variable, text: req.query.text});
+            newDatos.save(function(err){ 
+                if(err) return err;
+                res.send('Bien');
+                console.log("Base de datos actualizada");
+                console.log("Nombre:" + newDatos.name );
+                console.log("id del creador: " + newDatos._creator);
+                console.log("id del file[0]: " + file[0]._id);
+                console.log("Datos: " + newDatos);
+            });
+        })
+    })
+    
+    // Datos.find({}, function(err, files) {
+    //     if (err) return err;
+    //     if (files.length > 3) {
+    //         Datos.remove({name: files[3].name}).exec();
+    //     }
+    //     let newDatos = new Datos({name: req.params.variable, text: req.query.text});
+    //     newDatos.save(function(err){ 
+    //       if(err) res.send('Algo fallo niño');
+    //       res.send('Bien');
+    //       console.log("Base de datos actualizada");
+    //       console.log("Nombre:" + newDatos.name );
+    //       console.log("Datos: " + newDatos);
+    //     });
+    // });
 
 });
 
