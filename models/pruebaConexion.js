@@ -35,7 +35,7 @@
             let ejemplo1mena = new Datos({
               _creator: mena._id, 
               name: 'ejemplo1mena', 
-              text: '"tupadre",           "esputite"\n"no es tu padre",             "pero es putite"\n"es tu padre", "pero no es putite"'
+              text: '"tu padre",           "soy yo"\n"no es tu padre",             "pero no soy yo"\n"es tu padre", "pero soy yo"'
               
             });
             ejemplo1mena.save(function(err){
@@ -57,7 +57,7 @@
             let ejemplo1yeray = new Datos({
               _creator: yeray._id, 
               name: 'ejemplo1yeray', 
-              text: '"tumadre",           "esprostitute"\n"es tu madre",             "es prostitute"\n"es tu padre", "pero no es prostitute"'
+              text: '"tumadre",           "es ella"\n"es tu madre",             "pero no es ella"\n"es tu padre", "pero es ella"'
               
             });
             ejemplo1yeray.save(function(err){
@@ -75,7 +75,7 @@
             let ejemplo3yeray = new Datos({
               _creator: yeray._id, 
               name: 'ejemplo3yeray', 
-              text: '"esto",           "esta saliendo"\n"de puta",             "madre"\n"casiano", "RESPETA"'
+              text: '"esto",           "esta saliendo"\n"de puta",             "madre"\n"hola", "papito"'
               
             });
             ejemplo3yeray.save(function(err){
