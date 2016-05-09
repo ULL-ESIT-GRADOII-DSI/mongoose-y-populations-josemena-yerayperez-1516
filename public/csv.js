@@ -67,44 +67,69 @@ const handleDragOver = (evt) => {
 }
 
   $(document).ready(() => {
-    console.log("entre al ready");
-
+    //console.log("entre al ready");
     // comprobar que hay tres elementos para mostrarlos
     let aux =3;
     let original = document.getElementById("original");  
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
     }
-
+    
     $("#entrar").click( () => {
-      // console.log("entre al de entrar")
+      console.log("entre al de entrar");
       if(window.localStorage){
+        localStorage.clear();
+        console.log("entre a actualizar el nombre");
         localStorage.nombre = $("#nombreusuario").val();
-        // console.log("localStorage.nombre: " + localStorage.nombre);
-        // console.log("$('#nombreusu').val(): " + $("#nombreusuario").val());
+        
+        //console.log("localStorage.nombre: " + localStorage.nombre);
+        //console.log("$('#nombreusu').val(): " + $("#nombreusuario").val());
       }
-//      $.get("/usuario",{nombre: localStorage.nombre},()=>{
-//        console.log("Hola lo cree");
-//      });
     });
+    
     /* Request AJAX para que se calcule la tabla */
-     $("#parse").click( () => {
-        if (window.localStorage) localStorage.original = original.value;
-        $.get("/csv", /* Request AJAX para que se calcule la tabla */
-          { input: original.value }, 
-          fillTable,
-          'json'
-          );
-   });
+    $("#parse").click( () => {
+      if (window.localStorage) localStorage.original = original.value;
+      $.get("/csv", /* Request AJAX para que se calcule la tabla */
+        { input: original.value }, 
+        fillTable,
+        'json'
+        );
+    }
+    );
+    
        // Boton de guardar el contenido del text area
-  $("#guardar").click( () => { 
-    let dataString = $('#original').val();
-    $.get("/mongo/" + $("#nombre").val(),
-    {
-      text: dataString,
-      cont: aux++,
-      nombre: localStorage.nombre
-    },() =>{
+    $("#guardar").click( () => { 
+      let dataString = $('#original').val();
+      $.get("/mongo/" + $("#nombre").val(),
+      {
+        text: dataString,
+        cont: aux++,
+        nombre: localStorage.nombre
+      },() =>{
+        $.get("/botonprueba",
+        {
+          nombre: window.localStorage.nombre
+        }, (ejemplos)=>{
+          //console.log("Llege");
+          //console.log("nombre del ejemplo: " + ejemplos[0].name);
+          //$('button.example').get(0).textContent = ejemplos[0].name;
+          for (var i = 0; i < ejemplos.length; i++) {
+            if (ejemplos[i]){
+              //console.log("id del boton: " + $('button.example').get(i).id);  
+              // console.log('#ejemplo'+i);
+              $('button.example').get(i).className = "example";
+              $('button.example').get(i).textContent= ejemplos[i].name;
+              $('#ejemplo'+(i+1)).fadeIn();
+            }
+          }
+        });
+      });
+      //return false;
+    });
+    
+    
+    $("#refrescar").click(()=>{
       $.get("/botonprueba",
       {
         nombre: window.localStorage.nombre
@@ -123,48 +148,27 @@ const handleDragOver = (evt) => {
         }
       });
     });
-    //return false;
-  });
-  
-  $("#refrescar").click(()=>{
-    $.get("/botonprueba",
-    {
-      nombre: window.localStorage.nombre
-    }, (ejemplos)=>{
-      //console.log("Llege");
-      //console.log("nombre del ejemplo: " + ejemplos[0].name);
-      //$('button.example').get(0).textContent = ejemplos[0].name;
-      for (var i = 0; i < ejemplos.length; i++) {
-        if (ejemplos[i]){
-          //console.log("id del boton: " + $('button.example').get(i).id);  
-          // console.log('#ejemplo'+i);
-          $('button.example').get(i).className = "example";
-          $('button.example').get(i).textContent= ejemplos[i].name;
-          $('#ejemplo'+(i+1)).fadeIn();
-        }
-      }
-    });
-  });
     
-  /* botones para rellenar el textarea */
-  $('button.example').each( (_,y) => {
-    // $(y).click( () => {dump(`${$(y).text()}`); });
-    $(y).click( () => {dump(`${$(y).text()}`); 
-      $.get("/buscar",{name: $(y).text()},
-        (readData) => {
-        //console.log("Entre aqui"+ readData[0].text)
-        $("#original").val(readData[0].text);
+    
+    /* botones para rellenar el textarea */
+    $('button.example').each( (_,y) => {
+      // $(y).click( () => {dump(`${$(y).text()}`); });
+      $(y).click( () => {dump(`${$(y).text()}`); 
+        $.get("/buscar",{name: $(y).text()},
+          (readData) => {
+          //console.log("Entre aqui"+ readData[0].text)
+          $("#original").val(readData[0].text);
+        });
       });
     });
-  });
-  });
-   
-    // Setup the drag and drop listeners.
-    //var dropZone = document.getElementsByClassName('drop_zone')[0];
-    let dropZone = $('.drop_zone')[0];
-    dropZone.addEventListener('dragover', handleDragOver, false);
-    dropZone.addEventListener('drop', handleDragFileSelect, false);
-    let inputFile = $('.inputfile')[0];
-    inputFile.addEventListener('change', handleFileSelect, false);
     
+  });
+  
+  // Setup the drag and drop listeners.
+  //var dropZone = document.getElementsByClassName('drop_zone')[0];
+  let dropZone = $('.drop_zone')[0];
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleDragFileSelect, false);
+  let inputFile = $('.inputfile')[0];
+  inputFile.addEventListener('change', handleFileSelect, false);
 })();

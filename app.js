@@ -29,17 +29,21 @@ app.get('/analizador', (request,response) => {
     console.log("nombre: " + request.query.nombreusu);
     Usuario.count({nombre : request.query.nombreusu}, function(err,file){
         if(err) return console.log(err);
-        console.log("file: " + file);
+        //console.log("file: " + file);
         if(file==0){
-            console.log("entre al if del file");
+            //console.log("entre al if del file");
             let nuevoUsuario = new Usuario({nombre: request.query.nombreusu});
             nuevoUsuario.save(function(err){
                 if(err) return console.log(err);
-                console.log("Usuario creado");
+                //console.log("Usuario creado");
             });
         }
     });
     response.render('csv', { title: "Comma Separated Value Analyzer", error:""});
+});
+
+app.get('/inicio', (request,response) => {
+    response.render('index', { title: "Comma Separated Value Analyzer", error:""});
 });
 
 app.get('/csv', (request, response) => {
@@ -72,22 +76,6 @@ app.get('/mongo/:variable', function(req, res) {
             });
         })
     })
-    
-    // Datos.find({}, function(err, files) {
-    //     if (err) return err;
-    //     if (files.length > 3) {
-    //         Datos.remove({name: files[3].name}).exec();
-    //     }
-    //     let newDatos = new Datos({name: req.params.variable, text: req.query.text});
-    //     newDatos.save(function(err){ 
-    //       if(err) res.send('Algo fallo niño');
-    //       res.send('Bien');
-    //       console.log("Base de datos actualizada");
-    //       console.log("Nombre:" + newDatos.name );
-    //       console.log("Datos: " + newDatos);
-    //     });
-    // });
-
 });
 
 app.get('/mostrarBotones', function(req, res) {
@@ -105,7 +93,7 @@ app.get('/botonprueba',function(req, res) {
     Usuario.find({nombre : req.query.nombre},{_id:true}, function(err,file){
         if(err) return err;
         // console.log("file: " + file);
-        console.log("iDDD: " + file[0]._id);
+        //console.log("iDDD: " + file[0]._id);
         //console.log("nombrEEE: " + file[0].nombre);
         Datos.find({_creator: file[0]._id},{_id:false,name:true}, function(err, files) {
             if(err) return err;
