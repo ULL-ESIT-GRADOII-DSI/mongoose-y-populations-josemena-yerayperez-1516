@@ -99,30 +99,31 @@ const handleDragOver = (evt) => {
        // Boton de guardar el contenido del text area
   $("#guardar").click( () => { 
     let dataString = $('#original').val();
-      $.get("/mongo/" + $("#nombre").val(),
-      {
-          text: dataString,
-          cont: aux++,
-          nombre: localStorage.nombre
-      });
-      $.get("/botonprueba",
+    $.get("/mongo/" + $("#nombre").val(),
     {
-      nombre: window.localStorage.nombre
-    }, (ejemplos)=>{
-      //console.log("Llege");
-      //console.log("nombre del ejemplo: " + ejemplos[0].name);
-      //$('button.example').get(0).textContent = ejemplos[0].name;
-      for (var i = 0; i < ejemplos.length; i++) {
-        if (ejemplos[i]){
-          //console.log("id del boton: " + $('button.example').get(i).id);  
-          // console.log('#ejemplo'+i);
-          $('button.example').get(i).className = "example";
-          $('button.example').get(i).textContent= ejemplos[i].name;
-          $('#ejemplo'+(i+1)).fadeIn();
+      text: dataString,
+      cont: aux++,
+      nombre: localStorage.nombre
+    },() =>{
+      $.get("/botonprueba",
+      {
+        nombre: window.localStorage.nombre
+      }, (ejemplos)=>{
+        //console.log("Llege");
+        //console.log("nombre del ejemplo: " + ejemplos[0].name);
+        //$('button.example').get(0).textContent = ejemplos[0].name;
+        for (var i = 0; i < ejemplos.length; i++) {
+          if (ejemplos[i]){
+            //console.log("id del boton: " + $('button.example').get(i).id);  
+            // console.log('#ejemplo'+i);
+            $('button.example').get(i).className = "example";
+            $('button.example').get(i).textContent= ejemplos[i].name;
+            $('#ejemplo'+(i+1)).fadeIn();
+          }
         }
-      }
+      });
     });
-      return false;
+    //return false;
   });
   
   $("#refrescar").click(()=>{
